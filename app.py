@@ -25,7 +25,7 @@ def take_input(model=None):
             keys = [x for x in features.keys()]
             default_value = None
             new_data = dict.fromkeys(keys, default_value)
-            c1, c2 = st.columns(2, gap="medium")
+            c1, c2 = st.columns(2, gap="medium", vertical_alignment="top")
             i = 1
             for feature in features.keys():
                 
