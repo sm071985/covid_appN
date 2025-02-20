@@ -27,9 +27,10 @@ def take_input(model=None):
             new_data = dict.fromkeys(keys, default_value)
             c1, c2 = st.columns(2, gap="medium")
             for feature in features.keys():
-                i = 0
+                i = 1
                 if i%2 == 0:
                     with c1:
+                        st.write(i)
                         options = features[feature].keys()
                         # st.write(options)
                         if feature in ('ct_value_screening'):
