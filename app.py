@@ -19,7 +19,7 @@ def predict_results(model, new_data):
 
 def take_input(model=None):
     if model is not None:
-        with st.form('Select Parameters to test:', ):
+        with st.form('Select Parameters to test:', clear_on_submit=True):
             features = pkl.load(open(f'./models/Features.pkl', 'rb'))
             # st.write(features)
             keys = [x for x in features.keys()]
