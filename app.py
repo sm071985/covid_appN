@@ -13,7 +13,7 @@ def predict_results(model, new_data):
         scaler = pkl.load(f)
         new_data = scaler.transform(new_data) 
         new_data =  pd.DataFrame(new_data,columns=columnsN) # Apply scaling on the test data
-        # st.dataframe(new_data, hide_index= True)
+        st.dataframe(new_data, hide_index= True)
         y_pred=model.predict(new_data)
         return y_pred
 
