@@ -43,14 +43,13 @@ def take_input(model=None):
     if 'subB' in st.session_state and st.session_state['subB']:
                 # st.write(new_data)
                 # st.write(subB) 
-        # st.write(pd.DataFrame(new_data).reset_index())
+        st.write(pd.DataFrame(new_data), hide_index=True)
         new_data = pd.DataFrame(new_data)
         # columnsN = new_data.columns
 
-        # y_pred = predict_results(model, new_data)
-        # st.write(pd.DataFrame(y_pred).reset_index())
-        prediction = model.predict(new_data)
-        st.write(prediction)
+        y_pred = predict_results(model, new_data)
+        st.write(pd.DataFrame(y_pred), hide_index = True)
+
         # st.subheader(f'You have Covid-19 with likelihood of {prediction*100:.2f}%')
         # else:
         #     st.subheader(f'You don\'t have Covid-19')# likelihood of {100 - prediction*100:.2f}%')    
