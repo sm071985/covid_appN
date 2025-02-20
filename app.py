@@ -50,7 +50,7 @@ def take_input(model=None):
         # y_pred = predict_results(model, new_data)
         # st.write(pd.DataFrame(y_pred).reset_index())
         prediction = model.predict(new_data)
-        st.subheader('predictions', prediction)
+        st.write(prediction)
         # st.subheader(f'You have Covid-19 with likelihood of {prediction*100:.2f}%')
         # else:
         #     st.subheader(f'You don\'t have Covid-19')# likelihood of {100 - prediction*100:.2f}%')    
