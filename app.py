@@ -26,8 +26,9 @@ def take_input(model=None):
             default_value = None
             new_data = dict.fromkeys(keys, default_value)
             c1, c2 = st.columns(2, gap="medium")
+            i = 1
             for feature in features.keys():
-                i = 1
+                
                 if i%2 == 0:
                     with c1:
                         st.write(i)
