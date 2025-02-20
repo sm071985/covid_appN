@@ -25,15 +25,30 @@ def take_input(model=None):
             keys = [x for x in features.keys()]
             default_value = None
             new_data = dict.fromkeys(keys, default_value)
-                # st.write(param)
+            c1, c2 = st.columns(2, gap="medium")
             for feature in features.keys():
-                options = features[feature].keys()
-                # st.write(options)
-                if feature in ('ct_value_screening'):
-                    tempV1 = st.slider(f"Enter value for {feature.upper()}", min_value=1, max_value=max(list(options)))
+                i = 0
+                if i%2 == 0:
+                    with c1:
+                        options = features[feature].keys()
+                        # st.write(options)
+                        if feature in ('ct_value_screening'):
+                            tempV1 = st.slider(f"Enter value for {feature.upper()}", min_value=1, max_value=max(list(options)))
+                        else:
+                            tempV1 = features[feature][st.selectbox(f"Select value for {feature.upper()}", 
+                                options = options) ]
                 else:
-                    tempV1 = features[feature][st.selectbox(f"Select value for {feature.upper()}", 
-                        options = options) ]
+                    with c2:
+                        options = features[feature].keys()
+                        # st.write(options)
+                        if feature in ('ct_value_screening'):
+                            tempV1 = st.slider(f"Enter value for {feature.upper()}", min_value=1, max_value=max(list(options)))
+                        else:
+                            tempV1 = features[feature][st.selectbox(f"Select value for {feature.upper()}", 
+                                options = options) ]
+
+                i = i+1
+
                 empL = []
                 empL.append(tempV1)
                 new_data[feature] = empL
@@ -43,12 +58,16 @@ def take_input(model=None):
     if 'subB' in st.session_state and st.session_state['subB']:
                 # st.write(new_data)
                 # st.write(subB) 
-        st.write(pd.DataFrame(new_data), hide_index=True)
+        # st.write(pd.DataFrame(new_data), hide_index=True)
         new_data = pd.DataFrame(new_data)
         # columnsN = new_data.columns
 
         y_pred = predict_results(model, new_data)
-        st.write(pd.DataFrame(y_pred), hide_index = True)
+        if y_pred[0] == 0:
+            st.subheader(f'You have Covid-19')
+        else:
+            st.subheader(f'You don\'t have Covid-19')
+        # st.write(pd.DataFrame(y_pred), hide_index = True)
 
         # st.subheader(f'You have Covid-19 with likelihood of {prediction*100:.2f}%')
         # else:
