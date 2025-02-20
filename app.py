@@ -31,7 +31,6 @@ def take_input(model=None):
                 
                 if i%2 == 0:
                     with c1:
-                        st.write(i)
                         options = features[feature].keys()
                         # st.write(options)
                         if feature in ('ct_value_screening'):
@@ -65,6 +64,7 @@ def take_input(model=None):
         # columnsN = new_data.columns
 
         y_pred = predict_results(model, new_data)
+        st.write(y_pred)
         if y_pred[0] == 0:
             st.subheader(f'You have Covid-19')
         else:
