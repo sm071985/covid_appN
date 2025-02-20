@@ -65,7 +65,7 @@ def take_input(model=None):
 
         y_pred = predict_results(model, new_data)
         st.write(y_pred)
-        if y_pred[0] == 0:
+        if y_pred[0] == 1:
             st.subheader(f'You have Covid-19')
         else:
             st.subheader(f'You don\'t have Covid-19')
