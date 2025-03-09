@@ -24,9 +24,9 @@ def model_loader(model, new_data):
     new_data_std = scaler.transform(new_data) 
         # st.dataframe(new_data_std, hide_index= True)
     new_data =  pd.DataFrame(new_data_std,columns=columnsN) 
-    st.write("New data scaled")# Apply scaling on the test data
+    # st.write("New data scaled")# Apply scaling on the test data
 
-    st.write(f'Using Model: {model}')
+    # st.write(f'Using Model: {model}')
     try:
         match model:
             case 'Naive Bayesian':
@@ -45,7 +45,7 @@ def model_loader(model, new_data):
                 load_model= pkl.load(open(f'./models/SVM_sigmoid{max_ct}.pkl', 'rb'))
         
         result = load_model.predict(new_data)
-        st.write(result)
+        # st.write(result)
         # result = predict_results(st.session_state.load_model, new_data)        
         if result[0] == 1:
             st.subheader(f'You have Covid-19')
